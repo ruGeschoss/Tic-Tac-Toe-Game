@@ -50,6 +50,7 @@ final class PlayerInputState: GameState {
     
     gameboard?.setPlayer(player, at: position)
     gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
+    log(.playerInput(player: player, position: position))
     isCompleted = true
   }
 }
