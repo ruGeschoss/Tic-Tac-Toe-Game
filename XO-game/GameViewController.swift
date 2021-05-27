@@ -48,16 +48,14 @@ class GameViewController: UIViewController {
 extension GameViewController {
   
   private func goToFirstState() {
-    currentState = PlayerInputState(player: .first,
-                                         gameViewController: self,
-                                         gameboard: gameboard,
-                                         gameboardView: gameboardView)
+    let player = Player.first
+    setPlayerInputState(player: player)
   }
   
   private func goToNextState() {
-    
-    if gameboardView.markViewForPosition.count == GameboardSize.maxFields
-    || referee.determineWinner() != nil {
+    let marksCount = gameboardView.markViewForPosition.count
+    if marksCount == GameboardSize.maxFields
+        || referee.determineWinner() != nil {
       
       let winner = referee.determineWinner()
       currentState = GameEndedState(winner: winner, gameViewController: self)
@@ -65,10 +63,20 @@ extension GameViewController {
     }
     
     if let playerInputState = currentState as? PlayerInputState {
-      currentState = PlayerInputState(player: playerInputState.player.next,
-                                           gameViewController: self,
-                                           gameboard: gameboard,
-                                           gameboardView: gameboardView)
+      let player = playerInputState.player.next
+      setPlayerInputState(player: player)
     }
   }
+}
+
+extension GameViewController {
+  
+  private func setPlayerInputState(player: Player) {
+    currentState = PlayerInputState(player: player,
+                                    markViewPrototype: player.markViewPrototype,
+                                    gameViewController: self,
+                                    gameboard: gameboard,
+                                    gameboardView: gameboardView)
+  }
+  
 }

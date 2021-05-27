@@ -10,6 +10,7 @@
 		B7A828C7265FFC74002FAD45 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828C6265FFC74002FAD45 /* GameState.swift */; };
 		B7A828C9265FFD32002FAD45 /* PlayerInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828C8265FFD32002FAD45 /* PlayerInputState.swift */; };
 		B7A828CB26600266002FAD45 /* GameEndedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828CA26600266002FAD45 /* GameEndedState.swift */; };
+		B7A828CE2660235F002FAD45 /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828CD2660235F002FAD45 /* Copying.swift */; };
 		F874E4712224621100364CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4702224621100364CAE /* AppDelegate.swift */; };
 		F874E4732224621100364CAE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4722224621100364CAE /* GameViewController.swift */; };
 		F874E4762224621100364CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F874E4742224621100364CAE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		B7A828C6265FFC74002FAD45 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		B7A828C8265FFD32002FAD45 /* PlayerInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInputState.swift; sourceTree = "<group>"; };
 		B7A828CA26600266002FAD45 /* GameEndedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndedState.swift; sourceTree = "<group>"; };
+		B7A828CD2660235F002FAD45 /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
 		F874E46D2224621100364CAE /* XO-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XO-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F874E4702224621100364CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F874E4722224621100364CAE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 				B7A828CA26600266002FAD45 /* GameEndedState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		B7A828CC26602341002FAD45 /* Prototype */ = {
+			isa = PBXGroup;
+			children = (
+				B7A828CD2660235F002FAD45 /* Copying.swift */,
+			);
+			path = Prototype;
 			sourceTree = "<group>";
 		};
 		F874E4642224621100364CAE = {
@@ -123,6 +133,7 @@
 		F874E4E62225CB3F00364CAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B7A828CC26602341002FAD45 /* Prototype */,
 				B7A828C5265FFC66002FAD45 /* State */,
 				F874E4DC2225C25D00364CAE /* GameboardPosition.swift */,
 				F874E4F22225E0B100364CAE /* GameboardSize.swift */,
@@ -232,6 +243,7 @@
 				F874E4DF2225C76000364CAE /* MarkView.swift in Sources */,
 				F874E4F12225DFF700364CAE /* Referee.swift in Sources */,
 				F874E4F52225E2CD00364CAE /* Gameboard.swift in Sources */,
+				B7A828CE2660235F002FAD45 /* Copying.swift in Sources */,
 				F874E4712224621100364CAE /* AppDelegate.swift in Sources */,
 				F874E4E22225CABF00364CAE /* OView.swift in Sources */,
 				F874E4F32225E0B100364CAE /* GameboardSize.swift in Sources */,
