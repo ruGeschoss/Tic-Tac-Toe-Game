@@ -83,11 +83,11 @@ public class GameboardView: UIView {
     
     private func drawColumnLines(for rect: CGRect) {
         let columnWidth = self.calculatedColumnWidth
-        for i in 1 ..< GameboardSize.columns {
+        for column in 1 ..< GameboardSize.columns {
             let linePath = UIBezierPath()
-            linePath.move(to: CGPoint(x: rect.minX + CGFloat(i) * columnWidth,
+            linePath.move(to: CGPoint(x: rect.minX + CGFloat(column) * columnWidth,
                                       y: rect.minY))
-            linePath.addLine(to: CGPoint(x: rect.minX + CGFloat(i) * columnWidth,
+            linePath.addLine(to: CGPoint(x: rect.minX + CGFloat(column) * columnWidth,
                                          y: rect.minY + rect.height))
             linePath.lineWidth = Constants.lineWidth
             linePath.stroke()
@@ -96,10 +96,10 @@ public class GameboardView: UIView {
     
     private func drawRowLines(for rect: CGRect) {
         let rowHeight = self.calculatedRowHeight
-        for i in 1 ..< GameboardSize.rows {
+        for row in 1 ..< GameboardSize.rows {
             let linePath = UIBezierPath()
-            linePath.move(to: CGPoint(x: rect.minX, y: rect.minY + CGFloat(i) * rowHeight))
-            linePath.addLine(to: CGPoint(x: rect.minX + rect.width, y: rect.minY + CGFloat(i) * rowHeight))
+            linePath.move(to: CGPoint(x: rect.minX, y: rect.minY + CGFloat(row) * rowHeight))
+            linePath.addLine(to: CGPoint(x: rect.minX + rect.width, y: rect.minY + CGFloat(row) * rowHeight))
             linePath.lineWidth = Constants.lineWidth
             linePath.stroke()
         }
@@ -110,11 +110,11 @@ public class GameboardView: UIView {
     private func determineColumn(for touchLocation: CGPoint) -> Int {
         let columnWidth = self.calculatedColumnWidth
         let lastColumn = GameboardSize.columns - 1
-        for i in (0 ..< lastColumn) {
-            let xMin = CGFloat(i) * columnWidth
-            let xMax = CGFloat(i + 1) * columnWidth
+        for column in (0 ..< lastColumn) {
+            let xMin = CGFloat(column) * columnWidth
+            let xMax = CGFloat(column + 1) * columnWidth
             if (xMin ..< xMax).contains(touchLocation.x) {
-                return i
+                return column
             }
         }
         return lastColumn
@@ -123,11 +123,11 @@ public class GameboardView: UIView {
     private func determineRow(for touchLocation: CGPoint) -> Int {
         let rowHeight = self.calculatedRowHeight
         let lastRow = GameboardSize.rows - 1
-        for i in (0 ..< lastRow) {
-            let yMin = CGFloat(i) * rowHeight
-            let yMax = CGFloat(i + 1) * rowHeight
+        for row in (0 ..< lastRow) {
+            let yMin = CGFloat(row) * rowHeight
+            let yMax = CGFloat(row + 1) * rowHeight
             if (yMin ..< yMax).contains(touchLocation.y) {
-                return i
+                return row
             }
         }
         return lastRow
