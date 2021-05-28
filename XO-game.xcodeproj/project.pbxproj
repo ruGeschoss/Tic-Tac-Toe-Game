@@ -20,6 +20,9 @@
 		B7A828DF26610BFA002FAD45 /* NPCInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828DE26610BFA002FAD45 /* NPCInputState.swift */; };
 		B7A828E1266110D9002FAD45 /* GameStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828E0266110D9002FAD45 /* GameStrategy.swift */; };
 		B7A828E426612363002FAD45 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828E326612363002FAD45 /* GameMode.swift */; };
+		B7A828E72661464F002FAD45 /* TwoPlayersStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828E62661464F002FAD45 /* TwoPlayersStrategy.swift */; };
+		B7A828E92661467A002FAD45 /* PlayerVersusNPCStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828E82661467A002FAD45 /* PlayerVersusNPCStrategy.swift */; };
+		B7A828EB266146A6002FAD45 /* FiveToFiveStratagy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A828EA266146A6002FAD45 /* FiveToFiveStratagy.swift */; };
 		F874E4712224621100364CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4702224621100364CAE /* AppDelegate.swift */; };
 		F874E4732224621100364CAE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4722224621100364CAE /* GameViewController.swift */; };
 		F874E4762224621100364CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F874E4742224621100364CAE /* Main.storyboard */; };
@@ -50,6 +53,9 @@
 		B7A828DE26610BFA002FAD45 /* NPCInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPCInputState.swift; sourceTree = "<group>"; };
 		B7A828E0266110D9002FAD45 /* GameStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStrategy.swift; sourceTree = "<group>"; };
 		B7A828E326612363002FAD45 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
+		B7A828E62661464F002FAD45 /* TwoPlayersStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayersStrategy.swift; sourceTree = "<group>"; };
+		B7A828E82661467A002FAD45 /* PlayerVersusNPCStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVersusNPCStrategy.swift; sourceTree = "<group>"; };
+		B7A828EA266146A6002FAD45 /* FiveToFiveStratagy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveToFiveStratagy.swift; sourceTree = "<group>"; };
 		F874E46D2224621100364CAE /* XO-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XO-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F874E4702224621100364CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F874E4722224621100364CAE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				B7A828E0266110D9002FAD45 /* GameStrategy.swift */,
+				B7A828E62661464F002FAD45 /* TwoPlayersStrategy.swift */,
+				B7A828E82661467A002FAD45 /* PlayerVersusNPCStrategy.swift */,
+				B7A828EA266146A6002FAD45 /* FiveToFiveStratagy.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -320,8 +329,11 @@
 				F874E4F32225E0B100364CAE /* GameboardSize.swift in Sources */,
 				B7A828D726603596002FAD45 /* LoggerInvoker.swift in Sources */,
 				B7A828D3266033F8002FAD45 /* LogCommand.swift in Sources */,
+				B7A828E92661467A002FAD45 /* PlayerVersusNPCStrategy.swift in Sources */,
 				B7A828D5266034F4002FAD45 /* Logger.swift in Sources */,
 				F874E4E42225CB0700364CAE /* XView.swift in Sources */,
+				B7A828EB266146A6002FAD45 /* FiveToFiveStratagy.swift in Sources */,
+				B7A828E72661464F002FAD45 /* TwoPlayersStrategy.swift in Sources */,
 				B7A828C7265FFC74002FAD45 /* GameState.swift in Sources */,
 				F874E4DB2225C1AC00364CAE /* GameboardView.swift in Sources */,
 				B7A828E1266110D9002FAD45 /* GameStrategy.swift in Sources */,

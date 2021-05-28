@@ -1,5 +1,5 @@
 //
-//  GameStrategy.swift
+//  TwoPlayersStrategy.swift
 //  XO-game
 //
 //  Created by Alexander Andrianov on 28.05.2021.
@@ -8,29 +8,21 @@
 
 import Foundation
 
-protocol GameStrategy {
-  
-  func setFirstState(gameboard: Gameboard,
-                     gameboardView: inout GameboardView,
-                     gameViewController: GameViewController) -> GameState
+class TwoPlayersStrategy: GameStrategy {
   
   func setNextState(currentState: inout GameState,
                     gameboard: Gameboard,
                     gameboardView: inout GameboardView,
-                    gameViewController: GameViewController)
-}
-
-extension GameStrategy {
-  
-  func setFirstState(gameboard: Gameboard,
-                     gameboardView: inout GameboardView,
-                     gameViewController: GameViewController) -> GameState {
-    let player = Player.first
-    return PlayerInputState(player: player,
+                    gameViewController: GameViewController) {
+    
+    guard let playerInputState = currentState as? PlayerInputState else { return }
+    
+    let player = playerInputState.player.next
+    currentState = PlayerInputState(player: player,
                                     markViewPrototype: player.markViewPrototype,
                                     gameViewController: gameViewController,
                                     gameboard: gameboard,
                                     gameboardView: gameboardView)
+    
   }
-  
 }

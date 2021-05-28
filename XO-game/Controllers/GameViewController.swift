@@ -50,8 +50,9 @@ class GameViewController: UIViewController {
 extension GameViewController {
   
   private func goToFirstState() {
-    let player = Player.first
-    setPlayerInputState(player: player)
+    currentState = gameMode?.setFirstState(gameboard: gameboard,
+                                           gameboardView: &gameboardView,
+                                           gameViewController: self)
   }
   
   private func goToNextState() {
@@ -69,16 +70,4 @@ extension GameViewController {
                            gameboardView: &gameboardView,
                            gameViewController: self)
   }
-}
-
-extension GameViewController {
-  
-  private func setPlayerInputState(player: Player) {
-    currentState = PlayerInputState(player: player,
-                                    markViewPrototype: player.markViewPrototype,
-                                    gameViewController: self,
-                                    gameboard: gameboard,
-                                    gameboardView: gameboardView)
-  }
-  
 }

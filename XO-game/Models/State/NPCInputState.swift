@@ -40,12 +40,15 @@ final class NPCInputState: GameState {
     gameViewController?.secondPlayerTurnLabel.text = Constants.npcTurnLabelText
     gameViewController?.secondPlayerTurnLabel.isHidden = false
     gameViewController?.winnerLabel.isHidden = true
+    gameViewController?.gameboardView.isUserInteractionEnabled = false
     
     guard
       let position = gameboard?.getEmptyPositions().randomElement()
     else { return }
     
-    gameboardView?.onSelectPosition!(position)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      self.gameboardView?.onSelectPosition!(position)
+    }
   }
   
   func addMark(at position: GameboardPosition) {
@@ -53,5 +56,7 @@ final class NPCInputState: GameState {
     gameboardView?.placeMarkView(markViewPrototype.copy(), at: position)
     log(.playerInput(player: player, position: position))
     isCompleted = true
+    gameViewController?.gameboardView.isUserInteractionEnabled = true
   }
+  
 }
