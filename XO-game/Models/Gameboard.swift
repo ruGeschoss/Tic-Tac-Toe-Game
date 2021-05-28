@@ -38,6 +38,18 @@ public final class Gameboard {
     return positions[column][row] == player
   }
   
+  func getEmptyPositions() -> [GameboardPosition] {
+    var emptyPositions: [GameboardPosition] = []
+    positions.enumerated().forEach { index, column in
+      emptyPositions += column
+        .enumerated()
+        .filter { $0.element == nil }
+        .map { $0.offset }
+        .map { GameboardPosition(column: index, row: $0) }
+    }
+    return emptyPositions
+  }
+  
   // MARK: - Private
   
   private func initialPositions() -> [[Player?]] {

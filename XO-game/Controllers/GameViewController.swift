@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
   @IBOutlet var winnerLabel: UILabel!
   @IBOutlet var restartButton: UIButton!
   
+  var gameMode: GameStrategy?
   private lazy var referee = Referee(gameboard: gameboard)
   private let gameboard = Gameboard()
   private var currentState: GameState! {
@@ -63,10 +64,10 @@ extension GameViewController {
       return
     }
     
-    if let playerInputState = currentState as? PlayerInputState {
-      let player = playerInputState.player.next
-      setPlayerInputState(player: player)
-    }
+    gameMode?.setNextState(currentState: &currentState,
+                           gameboard: gameboard,
+                           gameboardView: &gameboardView,
+                           gameViewController: self)
   }
 }
 
