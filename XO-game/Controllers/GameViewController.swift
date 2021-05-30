@@ -16,7 +16,10 @@ class GameViewController: UIViewController {
   @IBOutlet var winnerLabel: UILabel!
   @IBOutlet var restartButton: UIButton!
   
-  private lazy var referee = Referee(gameboard: gameboard)
+  var gameMode: GameStrategy?
+  private(set) lazy var referee = Referee(gameboard: gameboard)
+  private(set) lazy var commandInvoker = FiveToFiveInvoker(gameboard: gameboard,
+                                              gameboardView: gameboardView)
   private let gameboard = Gameboard()
   private var currentState: GameState! {
     didSet {
@@ -46,38 +49,32 @@ class GameViewController: UIViewController {
   }
 }
 
+// MARK: - Set currentState
 extension GameViewController {
   
   private func goToFirstState() {
-    let player = Player.first
-    setPlayerInputState(player: player)
+    currentState = gameMode?.setFirstState(gameboard: gameboard,
+                                           gameboardView: &gameboardView,
+                                           gameViewController: self)
   }
   
   private func goToNextState() {
+    checkIfShouldEndGame()
+    gameMode?.setNextState(currentState: &currentState,
+                           gameboard: gameboard,
+                           gameboardView: &gameboardView,
+                           gameViewController: self)
+  }
+  
+  private func checkIfShouldEndGame() {
     let marksCount = gameboardView.markViewForPosition.count
     if marksCount == GameboardSize.maxFields
         || referee.determineWinner() != nil {
       
       let winner = referee.determineWinner()
-      currentState = GameEndedState(winner: winner, gameViewController: self)
+      currentState = GameEndedState(winner: winner,
+                                    gameViewController: self)
       return
     }
-    
-    if let playerInputState = currentState as? PlayerInputState {
-      let player = playerInputState.player.next
-      setPlayerInputState(player: player)
-    }
   }
-}
-
-extension GameViewController {
-  
-  private func setPlayerInputState(player: Player) {
-    currentState = PlayerInputState(player: player,
-                                    markViewPrototype: player.markViewPrototype,
-                                    gameViewController: self,
-                                    gameboard: gameboard,
-                                    gameboardView: gameboardView)
-  }
-  
 }

@@ -11,12 +11,13 @@ import Foundation
 public enum Player: CaseIterable {
   case first
   case second
+  case npc
   
   var next: Player {
     switch self {
     case .first:
       return .second
-    case .second:
+    case .second, .npc:
       return .first
     }
   }
@@ -25,7 +26,7 @@ public enum Player: CaseIterable {
     switch self {
     case .first:
       return XView()
-    case .second:
+    case .second, .npc:
       return OView()
     }
   }

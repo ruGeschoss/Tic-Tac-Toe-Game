@@ -1,14 +1,18 @@
 //
-//  PlayerInputState.swift
+//  FiveToFiveInputState.swift
 //  XO-game
 //
-//  Created by Alexander Andrianov on 27.05.2021.
+//  Created by Alexander Andrianov on 29.05.2021.
 //  Copyright © 2021 plasmon. All rights reserved.
 //
 
 import Foundation
 
-final class PlayerInputState: GameState {
+final class FiveToFiveInputState: GameState {
+  
+  private enum Constants {
+    static let maximMarksForPlayer: Int = 5
+  }
   
   private(set) var isCompleted = false
   
@@ -23,6 +27,7 @@ final class PlayerInputState: GameState {
        gameViewController: GameViewController,
        gameboard: Gameboard,
        gameboardView: GameboardView) {
+    
     self.player = player
     self.markViewPrototype = markViewPrototype
     self.gameViewController = gameViewController
@@ -45,12 +50,17 @@ final class PlayerInputState: GameState {
   func addMark(at position: GameboardPosition) {
     guard
       let gameboardView = gameboardView,
-      gameboardView.canPlaceMarkView(at: position)
+      gameboardView.canPlaceMarkView(at: position),
+      let invoker = gameViewController?.commandInvoker
     else { return }
     
-    gameboard?.setPlayer(player, at: position)
-    gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
-    log(.playerInput(player: player, position: position))
-    isCompleted = true
+    gameboardView.placeMarkView(player.markViewPrototype, at: position)
+      invoker.addCommand(player: player,
+                                                  position: position)
+    if invoker.allCommands.count % Constants.maximMarksForPlayer == 0 {
+      gameboardView.clear()
+      isCompleted = true
+    }
   }
+  
 }
