@@ -17,7 +17,9 @@ class GameViewController: UIViewController {
   @IBOutlet var restartButton: UIButton!
   
   var gameMode: GameStrategy?
-  private lazy var referee = Referee(gameboard: gameboard)
+  private(set) lazy var referee = Referee(gameboard: gameboard)
+  private(set) lazy var commandInvoker = FiveToFiveInvoker(gameboard: gameboard,
+                                              gameboardView: gameboardView)
   private let gameboard = Gameboard()
   private var currentState: GameState! {
     didSet {
@@ -47,6 +49,7 @@ class GameViewController: UIViewController {
   }
 }
 
+// MARK: - Set currentState
 extension GameViewController {
   
   private func goToFirstState() {
@@ -56,18 +59,22 @@ extension GameViewController {
   }
   
   private func goToNextState() {
+    checkIfShouldEndGame()
+    gameMode?.setNextState(currentState: &currentState,
+                           gameboard: gameboard,
+                           gameboardView: &gameboardView,
+                           gameViewController: self)
+  }
+  
+  private func checkIfShouldEndGame() {
     let marksCount = gameboardView.markViewForPosition.count
     if marksCount == GameboardSize.maxFields
         || referee.determineWinner() != nil {
       
       let winner = referee.determineWinner()
-      currentState = GameEndedState(winner: winner, gameViewController: self)
+      currentState = GameEndedState(winner: winner,
+                                    gameViewController: self)
       return
     }
-    
-    gameMode?.setNextState(currentState: &currentState,
-                           gameboard: gameboard,
-                           gameboardView: &gameboardView,
-                           gameViewController: self)
   }
 }

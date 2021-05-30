@@ -13,34 +13,45 @@ final class MainMenuVC: UIViewController {
   private enum Constants {
     static let onePlayerTitle = "Player VS NPC"
     static let twoPlayersTitle = "Player VS Player"
+    static let fiveToFiveTitle = "5 to 5"
   }
   
   @IBOutlet weak var onePlayer: UIButton!
   @IBOutlet weak var twoPlayers: UIButton!
+  @IBOutlet weak var fiveToFive: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    onePlayer.setTitle(Constants.onePlayerTitle, for: .normal)
-    twoPlayers.setTitle(Constants.twoPlayersTitle, for: .normal)
+    setButtonTitles()
+  }
+  
+  private func startGameWithMode(gameMode: GameMode) {
+    guard
+      let destination = storyboard?
+        .instantiateViewController(withIdentifier: GameViewController.storyboardID)
+        as? GameViewController
+    else { return }
+    destination.gameMode = gameMode.strategy
+    navigationController?.pushViewController(destination, animated: true)
   }
   
   @IBAction func onePlayerTapped(_ sender: UIButton) {
-    guard
-      let destination = storyboard?
-        .instantiateViewController(withIdentifier: GameViewController.storyboardID)
-        as? GameViewController
-    else { return }
-    destination.gameMode = GameMode.playerVersusNPC.strategy
-    navigationController?.pushViewController(destination, animated: true)
+    startGameWithMode(gameMode: .playerVersusNPC)
   }
   
   @IBAction func twoPlayersTapped(_ sender: UIButton) {
-    guard
-      let destination = storyboard?
-        .instantiateViewController(withIdentifier: GameViewController.storyboardID)
-        as? GameViewController
-    else { return }
-    destination.gameMode = GameMode.twoPlayers.strategy
-    navigationController?.pushViewController(destination, animated: true)
+    startGameWithMode(gameMode: .twoPlayers)
+  }
+  @IBAction func fiveToFiveTapped(_ sender: UIButton) {
+    startGameWithMode(gameMode: .fiveToFive)
+  }
+}
+
+// MARK: - Setup
+extension MainMenuVC {
+  private func setButtonTitles() {
+    onePlayer.setTitle(Constants.onePlayerTitle, for: .normal)
+    twoPlayers.setTitle(Constants.twoPlayersTitle, for: .normal)
+    fiveToFive.setTitle(Constants.fiveToFiveTitle, for: .normal)
   }
 }

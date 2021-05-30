@@ -9,7 +9,7 @@
 import Foundation
 
 enum GameMode: CaseIterable {
-  case twoPlayers, playerVersusNPC
+  case twoPlayers, playerVersusNPC, fiveToFive
 }
 
 extension GameMode {
@@ -19,6 +19,8 @@ extension GameMode {
       return TwoPlayersStrategy()
     case .playerVersusNPC:
       return PlayerVersusNPCStrategy()
+    case .fiveToFive:
+      return FiveToFiveStrategy()
     }
   }
 }

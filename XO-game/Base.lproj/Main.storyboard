@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mEQ-Yl-MMf">
-                                <rect key="frame" x="164.5" y="298.5" width="46" height="70"/>
+                                <rect key="frame" x="164.5" y="278.5" width="46" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gh2-wi-mpG">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
@@ -36,6 +36,13 @@
                                             <action selector="twoPlayersTapped:" destination="KdE-WF-yX8" eventType="touchUpInside" id="Lfx-2O-2Im"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCQ-9X-zaL">
+                                        <rect key="frame" x="0.0" y="80" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="fiveToFiveTapped:" destination="KdE-WF-yX8" eventType="touchUpInside" id="Rnl-5V-fZT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -48,6 +55,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="kgs-Ft-gyA"/>
                     <connections>
+                        <outlet property="fiveToFive" destination="lCQ-9X-zaL" id="dcn-ZE-1AM"/>
                         <outlet property="onePlayer" destination="Gh2-wi-mpG" id="0Er-DI-vcY"/>
                         <outlet property="twoPlayers" destination="Mc2-gE-pVe" id="840-RM-RrG"/>
                     </connections>

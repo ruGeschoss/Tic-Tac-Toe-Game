@@ -14,25 +14,25 @@ class PlayerVersusNPCStrategy: GameStrategy {
                     gameboard: Gameboard,
                     gameboardView: inout GameboardView,
                     gameViewController: GameViewController) {
-    
-    if currentState is PlayerInputState {
+    switch currentState {
+    case is PlayerInputState:
       let player = Player.npc
       currentState = NPCInputState(player: player,
                                    markViewPrototype: player.markViewPrototype,
                                    gameViewController: gameViewController,
                                    gameboard: gameboard,
                                    gameboardView: gameboardView)
-      return
-    } else {
-      guard currentState is NPCInputState else { return }
-      
+    case is NPCInputState:
       let player = Player.first
       currentState = PlayerInputState(player: player,
                                       markViewPrototype: player.markViewPrototype,
                                       gameViewController: gameViewController,
                                       gameboard: gameboard,
                                       gameboardView: gameboardView)
+    default:
       return
     }
+    
   }
+  
 }
