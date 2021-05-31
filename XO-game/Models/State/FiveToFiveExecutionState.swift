@@ -34,7 +34,6 @@ final class FiveToFiveExecutionState: GameState {
     gameViewController?.firstPlayerTurnLabel.isHidden = true
     gameViewController?.secondPlayerTurnLabel.isHidden = true
     gameViewController?.winnerLabel.text = Constants.executionTitle
-    gameViewController?.view.isUserInteractionEnabled = false
     gameViewController?.commandInvoker.executeCommands()
   }
   
@@ -43,7 +42,6 @@ final class FiveToFiveExecutionState: GameState {
       let gameViewController = gameViewController,
       gameViewController.commandInvoker.allCommands.isEmpty
     else { return }
-    gameViewController.view.isUserInteractionEnabled = true
     isCompleted = true
   }
   

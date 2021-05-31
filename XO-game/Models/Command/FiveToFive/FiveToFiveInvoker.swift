@@ -42,9 +42,10 @@ final class FiveToFiveInvoker {
     var executionDelay: Double = Constants.executionDelay
     
     allCommands.forEach { _ in
-      DispatchQueue.main.asyncAfter(deadline: .now() + executionDelay) {
-        let command = self.allCommands.removeFirst()
-        command.execute()
+      DispatchQueue.main
+        .asyncAfter(deadline: .now() + executionDelay) { [weak self] in
+        let command = self?.allCommands.removeFirst()
+        command?.execute()
       }
       executionDelay += Constants.executionDelay
     }

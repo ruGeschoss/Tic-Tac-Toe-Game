@@ -44,6 +44,7 @@ class GameViewController: UIViewController {
   @IBAction func restartButtonTapped(_ sender: UIButton) {
     gameboardView.clear()
     gameboard.clear()
+    commandInvoker = .init(gameboard: gameboard, gameboardView: gameboardView)
     log(.restartGame)
     goToFirstState()
   }
